@@ -33,13 +33,13 @@ function handleSymbol(symbol){
             }else{
                 buffer = buffer.substring(0, buffer.length - 1);
             }
-            break;
+            break;    
         case '+':
         case '−': 
         case '×':
         case '÷':
             handleMath(symbol);
-            break;
+            break;      
     }
 }
 
@@ -66,7 +66,11 @@ function flushOperation(intBuffer){
     }else if (previousOperator === '×'){
         runningTotal *= intBuffer;
     }else if (previousOperator === '÷'){
-        runningTotal /= intBuffer;
+        if(intBuffer !== 0){
+            runningTotal /= intBuffer;
+        }else{
+            alert("Cannot divide by zero!");
+        }
     }
 }
 
